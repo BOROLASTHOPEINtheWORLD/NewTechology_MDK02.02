@@ -1,0 +1,61 @@
+﻿<Window x:Class="NewTechn.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewTechn"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280"
+        FontFamily="Bahnschrift"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Заявки партнеров" FontSize="36" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#0C4882"/>
+
+        <ListView Grid.Row="1" x:Name="RequestListView" HorizontalContentAlignment="Stretch" MouseDoubleClick="RequestListView_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Padding="12" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="16"/>
+                                <TextBlock Text="{Binding Address}" />
+                                <TextBlock Text="{Binding Phone}" />
+                                <TextBlock Text="{Binding Rating}" />
+
+                                <TextBlock Text="{Binding ListProd}" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                     
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <TextBlock Text="{Binding Cost}" FontSize="18"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    
+
+              
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+           
+            <Button Content="Подсчитать количество материала" Margin="10" Padding="40,20"
+                    Click="Calculate_Click"   Background="#0C4882 " Foreground="White"/>
+            <Button Content="Добавить партнёра" Margin="10" Padding="40,20"
+                 HorizontalAlignment="Right"   Background="#0C4882 " Foreground="White"
+                 Click="AddPartnerButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
